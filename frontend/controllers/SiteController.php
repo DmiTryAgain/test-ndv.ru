@@ -2,10 +2,12 @@
 
 namespace frontend\controllers;
 
+use common\models\Currency;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\ActiveDataProvider;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -141,9 +143,15 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionCurrency()
     {
-        return $this->render('about');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Currency::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+        return $this->render('currency', compact('dataProvider'));
     }
 
     /**

@@ -18,6 +18,7 @@ class m210904_190401_create_table_currency extends Migration
             'char_code' => $this->string()->comment('Буквенный код валюты'),
             'nominal' => $this->string()->comment('Номинал'),
             'name' => $this->string()->comment('Название валюты'),
+            'cbr_id' => $this->string()->comment('Внутренний уникальный код валюты'),
         ]);
     }
 
